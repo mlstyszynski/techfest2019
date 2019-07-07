@@ -75,6 +75,7 @@ Use the username: `root` and password: `Juniper1!`
 + two eBGP peerings per leaf device in the Established state, 
 + Full IP reachability between the lo0.0 IP addresses of each fabric node
 
+---
 
 > **task 1.1 deploy the overlay iBGP EVPN network using the BGP ASN 64512**
 
@@ -85,9 +86,8 @@ Use the username: `root` and password: `Juniper1!`
 *Expected result*
 + The leaf and spine devices are discovered and each device is associated with the Edge-Routed architecture roles 
 + Spines1/2 should have role: null (aka Lean Spine) and Route-Reflector 
-
-Leafs1/2/3 should have the role: ERB-UCAST-Gateway
-
++ Leafs1/2/3 should have the role: ERB-UCAST-Gateway
+---
 
 ### Implementation details: 
 
