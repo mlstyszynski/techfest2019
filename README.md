@@ -71,7 +71,7 @@ Use the username: `root` and password: `Juniper1!`
 + Ensure the full IP reachability of your fabric
 + Verify the eBGP underlay peering are all in the established state
 
-``Expected result: two eBGP peerings per leaf device in the Established state, 
+Expected result: two eBGP peerings per leaf device in the Established state, 
 Full IP reachability between the lo0.0 IP addresses of each fabric node
 ``
 
