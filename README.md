@@ -65,7 +65,7 @@ Use the username: `root` and password: `Juniper1!`
 ### Lab tasks
 
 
-> Task 1.0: verify the full IPv4 underlay reachability within the  [main topology](https://github.com/juniper-dc/techfest2019#lab-topology)
+> **Task 1.0** verify the full IPv4 underlay reachability within the  [main topology](https://github.com/juniper-dc/techfest2019#lab-topology)
 
 
 + Ensure the full IP reachability of your fabric
@@ -74,10 +74,9 @@ Use the username: `root` and password: `Juniper1!`
 `Expected result:` 
 + two eBGP peerings per leaf device in the Established state, 
 + Full IP reachability between the lo0.0 IP addresses of each fabric node
-``
 
 
-> task 1.1: Deploy the overlay iBGP EVPN network using the BGP ASN 64512
+> **task 1.1** deploy the overlay iBGP EVPN network using the BGP ASN 64512
 
 + Discover the devices as based on the given range of subnet 10.0.0.0/24 
 + Associate the devices with the roles 
