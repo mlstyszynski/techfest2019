@@ -6,10 +6,7 @@
 
 The following diagram gives an overview of the flows between the EM main dashboard (server6) and the config API (server1)
 
-<img src="https://github.com/juniper-dc/techfest2019/tree/master/topologies/em_lab_baseline_flow.png" width="456" height="305">
-
-
-![Lab topology-1](topologies/em_lab_baseline_flow.png)
+![Lab topology-1, width="456" height="305"](topologies/em_lab_baseline_flow.png)
 
 ### Lab access ###
 
