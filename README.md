@@ -165,8 +165,8 @@ T5 instance is pushed dynamically to BMS1/2/3
 
 ---
 
-> **Task 1.11 Onboard the servers server3 and server4 as compute-4 as compute-nodes (aka vrouters)**
-+ server4 attached to leaf1 and server2 attached to leaf2 are successfully onboarded
+> **Task 1.11 Onboard the servers server3 and server4 from the topology as compute-nodes (aka vrouters)**
++ server4 attached to leaf1 and server3 attached to leaf2 are successfully onboarded
 
 *Expected result:*
 + you can ping from these servers their default gateway
