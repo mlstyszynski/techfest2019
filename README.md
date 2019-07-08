@@ -117,9 +117,14 @@ Use the username: `root` and password: `Juniper1!`
 *Expected result:* The virtual-network VLAN and IRB configuration is pushed to the leaf1 and leaf2. 
 BMS1 can ping BMS2 and EVPN based MAC@ learning is taking place
 
+*Ask yourself:* 
++ did you have to enable any VNI or VLAN ?
++ are the new virtual-network configurations enabled on all leafs or just selected leafs ?
+
+
 ---
  
-> **Task 1.6 Create a new Virtua-network for BMS3**
+> **Task 1.6 Create a new Virtual-network for BMS3**
 + Go to the Overlay EM 5.1 dashboard and enable new Virtual-Network used for BMS3 in the range 100.0.203.0/24
 
 *Expected result:* The new Virtual-Network is not yet pushed to the leaf devices but is successfuly created in the contrail config API
