@@ -4,9 +4,9 @@
 ### Lab topology
 ![Lab topology-1](topologies/em_lab_main_topo.png)
 
-The following diagram gives an overview of the flows between the EM main dashboard (server6) and the config API (server6 )
+The following diagram gives an overview of the flows between the EM main dashboard (server6) and the config API (server1)
 
-![Lab topology-1](topologies/em_lab_baseline_flow.png )
+![Lab topology-1,50%](topologies/em_lab_baseline_flow.png )
 ### Lab access ###
 
 ravello URL
