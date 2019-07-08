@@ -43,7 +43,6 @@ The ultimate goal of the present lab is to deliver:
  - L3 inter-vni communication should be symmetric and take place only at the leafs 
  - L2 VXLAN gateway for BMS1 to VM2 (on compute-server-3) should allow to communicate between the BMS1 and the VM2 using the same subnet 
 
-The L1-task20 is introducing the **Edge Routed Bridging Overlay** architecture using the IP anycast IRB approach and the inter-POD EVPN route T5. 
 ### Lab environment
 
 The  environment is composed of the following vqfx nodes: 
