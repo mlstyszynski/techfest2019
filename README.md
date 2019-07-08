@@ -15,15 +15,14 @@ username: userX (for example user1, user2 etc given at your desk)
 password: Juniper
 
 
-You can ssh using putty or secure-crt with the dns names or IP@ of the routing-engines RE listed in the table
-
-the lab vqfx device access info: 
+You can ssh using putty or secure-crt with the dns names or IP@ listed in ravello interface using your internet connectivity
++ the lab vqfx device access info: 
 `root` and `Juniper1!`
 
-the contrail EM dashboard login/password is:
++ the contrail EM dashboard login/password is:
 `admin` and `contrail123`
 
-the servers ssh access login/password is:
++ the servers ssh access login/password is:
 `root` and `c0ntrail123`
 
 ### Lab objectives
