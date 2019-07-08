@@ -131,6 +131,7 @@ BMS1 can ping BMS2 and EVPN based MAC@ learning is taking place
 
 *Expected result:* The virtual-network VLAN and IRB configuration is pushed to the leaf3 only
 BMS3 cannot ping the BMS1 and BMS2
+
 ---
 
 > **Task 1.8 Create a VPG-4 which will be ready to connect in the future the BMS-4 connected to leaf1 xe-0/0/7 and leaf2 xe-0/0/7**
