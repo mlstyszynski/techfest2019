@@ -6,7 +6,7 @@
 
 The following diagram gives an overview of the flows between the EM main dashboard (server6) and the config API (server6 )
 
-![Lab topology-1](topologies/em_lab_baseline_flow.png)
+![Lab topology-1 300x200](topologies/em_lab_baseline_flow.png )
 ### Lab access ###
 
 ravello URL
