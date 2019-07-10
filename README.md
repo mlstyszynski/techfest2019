@@ -12,7 +12,7 @@ The following diagram gives an overview of the flows between the EM main dashboa
 
 The lab topology is delivered within the Ravello Oracle cloud system. Every user gets his own virtual lab setup as per the main topology diagram. 
 
-The ravello URL allowing you to get the node IP@ information and login/password is shown on the printed lab material student gets during the in-person hands-on lab session. 
+The ravello URL allowing to get the nodes IP addresses and ravello login/password are on the printed lab material student gets during the in-person hands-on lab session. 
  
 You can ssh using putty or secure-crt with the dns names or IP@ listed in ravello interface using your internet connectivity
 + the lab vqfx device access info: 
