@@ -145,6 +145,10 @@ BMS3 cannot ping the BMS1 and BMS2
 > **Task 1.9  Create a new Logical-Router in order to communicate between the BMS1/2 and BMS3 - integrate the BMS1 and BMS3 virtual-networks under the same logical-router**
 + Go to the Overlay -> Logical Router dashboard option and create a new Logical Router name that associates the two Virtual-Networks enabled in previous tasks 
 + Specify at which leaf devices the logical router (T5 instance) should be enabled 
+Note: before enabling the logical-routers make sure in the EM 5.1 the vxlan-routing capability is explicitly enabled in the given fabric project 
+
+![Lab topology-1](topologies/enable_vxlan_routing.png)
+
 Note: the BMS-1/BMS-2 will have to get the static route for BMS-3 subnet and BMS-3 will have to get the static route for BMS-1/2 subnet
 You can add the routes by going to the BMS-1/2 and BMS-3 console and adding it: 
 `route add -net 100.0.203.0/24 gw 100.0.201.1` on BMS-1 and BMS-2
