@@ -211,7 +211,7 @@ Repeat the same for the server4 by adding on server4 the local IP@ and server4 n
  Note: In a CirrOS based VM default login is `cirros` and the password is `gocubsgo`
  
  Note: 
- + the VM created may need a static arp entry for the BMS 
+ + the VM created may need a static arp entry for the BMS due to the vqfx limitation where tunneled arp messages sometimes use vni 0
  + make sure the BMSes from the lab are not using as the last octet the IP@ `.1` or `.2` as these are reserved IP@ - change it to an unused IP@ from the given subnet at the BMS when needed
   
  `arp -s 100.0.201.12 2c:c2:60:63:51:e4`
