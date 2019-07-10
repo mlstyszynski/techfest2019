@@ -12,9 +12,6 @@ The following diagram gives an overview of the flows between the EM main dashboa
 
 ravello URL
 ravello login info:
-username: userX (for example user1, user2 etc given at your desk)
-password: Juniper
-
 
 You can ssh using putty or secure-crt with the dns names or IP@ listed in ravello interface using your internet connectivity
 + the lab vqfx device access info: 
@@ -148,11 +145,14 @@ BMS3 cannot ping the BMS1 and BMS2
 > **Task 1.9  Create a new Logical-Router in order to communicate between the BMS1/2 and BMS3 - integrate the BMS1 and BMS3 virtual-networks under the same logical-router**
 + Go to the Overlay -> Logical Router dashboard option and create a new Logical Router name that associates the two Virtual-Networks enabled in previous tasks 
 + Specify at which leaf devices the logical router (T5 instance) should be enabled 
+Note: the BMS-1/BMS-2 will have to get the static route for BMS-3 subnet and BMS-3 will have to get the static route for BMS-1/2 subnet
+You can add the routes by going to the BMS-1/2 and BMS-3 console and adding it: 
+`route add -net 100.0.203.0/24 gw 100.0.201.1` on BMS-1 and BMS-2
+`route add -net 100.0.201.0/24 gw 100.0.203.1` on BMS-3
 
 *Expected result:* 
-BMS3 is able to ping BMS1/2 
-T5 instance is pushed dynamically to BMS1/2/3 
-(Currently the leafs are enabled only with additional IRB - all in the global routing table and not in a dedicated T5 instance enabled at ERB leaf1/leaf2/leaf3 
++ BMS3 is able to ping BMS1/2 
++ T5 instance is pushed dynamically to BMS1/2/3 when new LR is created in contrail EM 
 
 ---
 
@@ -165,8 +165,8 @@ T5 instance is pushed dynamically to BMS1/2/3
 
 ---
 
-> **Task 1.11 Onboard the servers server3 and server4 from the topology as compute-nodes (aka vrouters)**
-+ server4 attached to leaf1 and server3 attached to leaf2 are successfully onboarded
+> **Task 1.11 Check the servers server3 and server4 from the topology are onboarded as compute-nodes (aka vrouters)**
++ server4 attached to leaf1 and server3 attached to leaf2 are successfully onboarded already so in this task we have to verify the IP full reachability from hypervisor point of view via the fabric underlay is delivered
 
 *Expected result:*
 + you can ping from these servers their default gateway
@@ -175,21 +175,73 @@ T5 instance is pushed dynamically to BMS1/2/3
 
 ---
 
-> **Task 1.12 Using a Cirros linux image enable the VM-1 on server4 cmpute-node and VM-2 on server3 compute-node**
+> **Task 1.12 Using a Cirros linux image enable two VMs in the same virtual-network as BMS-1 and BM-2**
+
+Note: before enabing the VMs ensure the local compute-node /etc/hosts file is updated with the IP in-band and hostname
+Here's the example of adding the in-band IP@ at the server3 shell `100.0.3.2 server3 server3` is added manually 
+You'll have to make the same changes for server4 and CSN server5 
+Here's the example of the change to be done at the server3 - first check the local IP@ of the in-band fabric interface and add it to /etc/hosts file 
+ 
+```
+[root@server3 ~]# vi /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+10.0.1.101 server1.local server1
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+10.0.1.104 server4.local server4
+10.0.1.105 server5.local server5
+10.0.1.102 server2.local server2
+10.0.1.103 server3.local server3
+100.0.3.2 server3 server3
+
+[root@server3 ~]# docker-compose down
+[root@server3 ~]# docker-compose up -d
+```
+Repeat the same for the server4 by adding on server4 the local IP@ and server4 name 
+
  + VM-1 and VM-2 should be enabled in the already existing virtual-network dedicated to BMS-1 and BMS-2 
+ + upload the cirros image. Using the contrail EM dashboard go to workloads > images and upload the Cirros tiny linux you can first download to your laptop 
+ 
+ https://docs.openstack.org/image-guide/obtain-images.html
+ 
+ Note: In a CirrOS based VM default login is `cirros` and the password is `gocubsgo`
+ 
+ Note: 
+ + the VM created may need a static arp entry for the BMS 
+ + make sure the BMSes from the lab are not using as the last octet the IP@ `.1` or `.2` as these are reserved IP@ - change it to an unused IP@ from the given subnet at the BMS when needed
+  
+ `arp -s 100.0.201.12 2c:c2:60:63:51:e4`
+ `arp -an`
+```
+[root@server4 ~]# route -n | grep 169
+169.254.0.0     0.0.0.0         255.255.0.0     U     1002   0        0 ens3
+169.254.0.3     0.0.0.0         255.255.255.255 UH    0      0        0 vhost0
+169.254.0.4     0.0.0.0         255.255.255.255 UH    0      0        0 vhost0
+[root@server4 ~]#
+[root@server4 ~]# ssh cirros@169.254.0.3
+cirros@169.254.0.3's password: 
+$ 
+$ 
+
+```
  
  *Expected result:* 
  + BMS1 can ping the VM-2
  + BMS-2 can ping VM-1 
 
+
 ---
  
  > **Task 1.13 Create a VM-3 an associate it with the existing virtual-network, created already for the BMS-3**
  
- *Expected result:* VM-3 can ping the BMS-3
+ *Expected result:* 
+ + VM-3 can ping the BMS-3
+ + VM-3 can ping BMS-1
 
 *Ask yourself:* 
-+ based on which EVPN routes the VXLAN tunnel from compute-node to the leaf is created
++ how does the VM-3 routing to BMS-1 takes place ? 
++ which part of the routing is at the vrouter and which at the qfx leaf device ? 
+
 
 ---
 
