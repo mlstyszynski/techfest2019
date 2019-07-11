@@ -67,10 +67,30 @@ Use the username: `root` and password: `Juniper1!`
 
 + Ensure the full IP reachability of your fabric
 + Verify the eBGP underlay peering are all in the established state
++ verify the contrail container and services are working fine in your lab
 
 *Expected result:*
 + two eBGP peerings per leaf device in the Established state, 
 + Full IP reachability between the lo0.0 IP addresses of each fabric node
++ contrail components containers are running at server1 and server6 
+
+Note: for contrail UI based verifications you can login to the EM dashboard via 
+
+https://<server6_public_IP_address>:9091 
+
+or to the legacy contrail dashboard 
+
+https://<server1_public_IP_address>:8143
+
+login/password is: `admin/contrail123`
+
++ the servers ssh access login/password is:
+`root` and `c0ntrail123`
+
+When ssh'ed into the contrail server1/server6 or the compute-nodes/CSN you can verify the baseline status by running the `contrail-status` command or by checking the state of the contrail containers `docker ps`
+
+You can check the type of containers running on server1 vs server6 and the containers running on the compute-nodes server3/server4/server5(CSN)
+
 
 ---
 
