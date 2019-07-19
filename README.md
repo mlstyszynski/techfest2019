@@ -1,4 +1,4 @@
-## EVPN-VXLAN - EM 5.1 fabric management hands-on lab
+## EVPN-VXLAN - ERB - EM 5.1 fabric management hands-on lab
 
 
 ### Lab topology
