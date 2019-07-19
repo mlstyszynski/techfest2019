@@ -243,9 +243,13 @@ Repeat the same for the server4 by adding on server4 the local IP@ and server4 n
  Note: 
  + the VM created may need a static arp entry for the BMS due to the vqfx limitation where tunneled arp messages sometimes use vni 0
  + make sure the BMSes from the lab are not using as the last octet the IP@ `.1` or `.2` as these are reserved IP@ - change it to an unused IP@ from the given subnet at the BMS when needed
-  
- `arp -s 100.0.201.12 2c:c2:60:63:51:e4`
- `arp -an`
+     
+     arp -s 100.0.201.12 2c:c2:60:63:51:e4
+     
+     arp -an
+
+where 100.0.200.12 is the IP address of the BMS and 2c:c2:60:63:51:e4 is the MAC of the respective interface on the BMS.
+
 ```
 [root@server4 ~]# route -n | grep 169
 169.254.0.0     0.0.0.0         255.255.0.0     U     1002   0        0 ens3
