@@ -103,6 +103,7 @@ You can check the type of containers running on server1 vs server6 and the conta
 
 > **Task 1.1 Deploy the overlay iBGP EVPN network using the BGP ASN 64512**
 
++ Go to Fabric / Action / Brownfield wizard
 + Discover the devices as based on the given range of subnet 10.0.0.0/24 
 + Associate the devices with the roles 
 + Deploy the overlay
@@ -164,7 +165,7 @@ BMS3 cannot ping the BMS1 and BMS2
 ---
 
 > **Task 1.8 Create a VPG-4 which will be ready to connect in the future the BMS-4 connected to leaf1 xe-0/0/7 and leaf2 xe-0/0/7**
-+ Go to the Overlay -> Virtual-Port-Group option of the EM dashboard and create two VPG ports associated with the same virtual-network as used by BMS-1 and BMS-2
++ Go to the Overlay -> Virtual-Port-Group option of the EM dashboard and create VPG-4 associated with the same virtual-network as used by BMS-1 and BMS-2
 
 *Expected result:* interfae xe-0/0/7 on leaf1 and leaf2 should be part of a new ESI-LAG, ESI and LACP system-id values of the new ESI-LAG should be allocated automatically by the Fabric Manager
 
