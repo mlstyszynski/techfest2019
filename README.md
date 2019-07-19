@@ -17,7 +17,8 @@ Every user gets his own virtual lab setup as per the main topology diagram - the
 You can ssh using putty or secure-crt with the dns names or IP@ listed in ravello interface using your internet connectivity
 You can also use the ravello console to access the devices.
 
-You can download the excel [here](https://github.com/juniper-dc/techfest2019/blob/master/topologies/cemlabstudents.xlsx) in order to get the ravello url for your student number.  
+You can download the excel file [here](https://github.com/juniper-dc/techfest2019/blob/master/topologies/cemlabstudents.xlsx) in order to get the ravello url for your student number.  
+
 The student number is given by the instructor during the in-person lab session. 
 
 
