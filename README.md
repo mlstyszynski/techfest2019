@@ -286,5 +286,4 @@ $
 
 ### Solution guide for EVPN/VXLAN lab ####
 
-+ here's the URL for the solution guide document [WIP]
-+ here's the video player with the solution for different tasks [WIP]
++ here's the URL for the solution guide document [EM_for_EVPN-VXLAN_ERB_solution_guide_v1.pdf]
