@@ -10,11 +10,17 @@ The following diagram gives an overview of the flows between the EM main dashboa
 
 ### Lab access ###
 
-The lab topology is delivered within the Ravello Oracle cloud system. Every user gets his own virtual lab setup as per the main topology diagram. 
+The lab topology is delivered within the Ravello Oracle cloud system. 
 
-The ravello URL allowing to get the nodes IP addresses and ravello login/password are on the printed lab material student gets during the in-person hands-on lab session. 
- 
+Every user gets his own virtual lab setup as per the main topology diagram - the devices and servers access information is available in the student url.
+
 You can ssh using putty or secure-crt with the dns names or IP@ listed in ravello interface using your internet connectivity
+You can also use the ravello console to access the devices.
+
+You can download the excel [here](https://github.com/juniper-dc/techfest2019/blob/master/topologies/cemlabstudents.xlsx) in order to get the ravello url for your student number.  
+The student number is given by the instructor during the in-person lab session. 
+
+
 + the lab vqfx device access info: 
 `root` and `Juniper1!`
 
