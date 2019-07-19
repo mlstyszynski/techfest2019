@@ -208,7 +208,7 @@ You can add the routes by going to the BMS-1/2 and BMS-3 console and adding it:
 
 ---
 
-> **Task 1.12 Using a Cirros linux image enable two VMs in the same virtual-network as BMS-1 and BM-2**
+> **Task 1.12 Using a Cirros linux image enable two VMs in the same virtual-network as BMS-1 and BMS-2**
 
 Note: before enabing the VMs ensure the local compute-node /etc/hosts file is updated with the IP in-band and hostname
 Here's the example of adding the in-band IP@ at the server3 shell `100.0.3.2 server3 server3` is added manually 
