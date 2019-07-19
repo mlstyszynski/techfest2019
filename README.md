@@ -36,7 +36,7 @@ The student number is given by the instructor during the in-person lab session.
 The goal of the present lab is to build the overlay **ERB - Edge Routed Bridging** data center fabric architecture using the Juniper QFX series EVPN-VXLAN technologies in order to deliver L2/L3 distributed and symmetric tenant system forwarding. 
 The tenant systems (TS) can be BMS (Bare Metal Servers) or Virtual-Machines. 
 
-The ZTP process was already conducted for the present fabric so the first step is to onboard the devices from the topology and create an overlay iBGP fabric.
+The ZTP process was already conducted for the present fabric so the first step is to onboard the qfx devices from the topology and create an overlay iBGP fabric.
 
 The iBGP EVPN sign. overlay will be used in order to advertise the Type-2 MAC@, MAC+IP routes and Type5 routes for prefixes or host route advertisement. 
  
