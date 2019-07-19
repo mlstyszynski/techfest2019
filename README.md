@@ -286,4 +286,4 @@ $
 
 ### Solution guide for EVPN/VXLAN lab ####
 
-+ here's the URL for the solution guide document [solution guide draft](https://github.com/juniper-dc/techfest2019/blob/master/topologies/EM_for_EVPN-VXLAN_ERB_solution_guide_v1.pdf)]
++ here's the URL for the solution guide document [solution guide draft](https://github.com/juniper-dc/techfest2019/blob/master/topologies/EM_for_EVPN-VXLAN_ERB_solution_guide_v1.pdf)
