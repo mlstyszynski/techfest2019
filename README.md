@@ -33,7 +33,8 @@ The student number is given by the instructor during the in-person lab session.
 
 ### Lab objectives
 
-The goal of the present lab is to build the overlay **Edge Routed Bridging** fabric architecture using the Juniper QFX series EVPN-VXLAN technologies in order to deliver L2 active/active forwarding within the datacenter between the BMS servers and VMs. 
+The goal of the present lab is to build the overlay **Edge Routed Bridging** fabric architecture using the Juniper QFX series EVPN-VXLAN technologies in order to deliver L2/L3 distributed tenant system forwarding within the datacenter fabric. 
+The tenant systems (TS) can be BMS (Bare Metal Servers) or Virtual-Machines. 
 
 The ZTP process was already conducted for the present fabric so the first step is to onboard the devices from the topology and create an overlay iBGP fabric.
 
