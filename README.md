@@ -12,7 +12,7 @@ The following diagram gives an overview of the flows between the EM main dashboa
 
 The lab topology is delivered within the Ravello Oracle cloud system. 
 
-Every user gets his own virtual lab setup as per the main topology diagram - the devices and servers access information is available in the student url.
+Every user gets his own virtual lab setup as per the main topology diagram.
 
 You can ssh using putty or secure-crt with the dns names or IP@ listed in ravello interface using your internet connectivity
 You can also use the ravello console to access the devices.
@@ -25,7 +25,7 @@ The student number is given by the instructor during the in-person lab session.
 + the lab vqfx device access info: 
 `root` and `Juniper1!`
 
-+ the contrail EM dashboard login/password is:
++ the contrail EM dashboard on server6 login/password is:
 `admin` and `contrail123`
 
 + the servers ssh access login/password is:
