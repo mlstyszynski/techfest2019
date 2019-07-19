@@ -38,9 +38,9 @@ The tenant systems (TS) can be BMS (Bare Metal Servers) or Virtual-Machines.
 
 The ZTP process was already conducted for the present fabric so the first step is to onboard the devices from the topology and create an overlay iBGP fabric.
 
-The iBGP EVPN sign. overlay will be used in order to advertise the MAC@ and MAC+IP and EVPN-type5
+The iBGP EVPN sign. overlay will be used in order to advertise the Type-2 MAC@, MAC+IP routes and Type5 routes for prefixes or host route advertisement. 
  
-The inter-vni tenant routing will be taking place at the leaf1/leaf2/leaf3 level only i.e. spines should not be provisioned with any tenant information but should play the role of Route Reflectors and IP Forwarders between the leafs
+The inter-vni tenant routing will be distributed and taking place at the leaf1/leaf2/leaf3 level only i.e. spines should not be provisioned with any tenant information but should play the role of Route Reflectors and IP Forwarders between the leafs
 
 
 The ultimate goal of the present lab is to deliver:
@@ -59,7 +59,7 @@ The  environment is composed of the following vqfx nodes:
 - 1 x controller - server1
 - 1 x EM dashboard - server6
 
-The underlay eBGP is already pre-provisioned in order to deliver full IP reachability between the loopback0.0 IP@ of the given IP fabric 
+The underlay eBGP is already pre-provisioned in order to deliver full IP reachability between the loopback0.0 IP@ of the given IP fabric
 
 > All nodes from the lab are accessible via internet, so you can verify each individual node state from your laptop using SSH sessions 
 
