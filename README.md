@@ -215,7 +215,7 @@ Here's the example of adding the in-band IP@ at the server3 shell `100.0.3.2 ser
 You'll have to make the same changes for server4 and CSN server5 
 Here's the example of the change to be done at the server3 - first check the local IP@ of the in-band fabric interface and add it to /etc/hosts file 
  
-```
+```bash
 [root@server3 ~]# vi /etc/hosts
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 10.0.1.101 server1.local server1
@@ -230,6 +230,8 @@ Here's the example of the change to be done at the server3 - first check the loc
 [root@server3 ~]# docker-compose down
 [root@server3 ~]# docker-compose up -d
 ```
+TODO: check why `docker-compose down` / `docker compose up -d` doesn't always work
+
 Repeat the same for the server4 by adding on server4 the local IP@ and server4 name 
 
  + VM-1 and VM-2 should be enabled in the already existing virtual-network dedicated to BMS-1 and BMS-2 
@@ -241,16 +243,17 @@ Repeat the same for the server4 by adding on server4 the local IP@ and server4 n
   + create a Flavor for your VM
   
  Note: 
- + the VM created may need a static arp entry for the BMS due to the vqfx limitation where tunneled arp messages sometimes use vni 0
  + make sure the BMSes from the lab are not using as the last octet the IP@ `.1` or `.2` as these are reserved IP@ - change it to an unused IP@ from the given subnet at the BMS when needed
-     
-     > arp -s 100.0.201.12 2c:c2:60:63:51:e4
-     
-     > arp -an
+ + the VM created may need a static arp entry for the BMS due to the vqfx limitation where tunneled arp messages sometimes use vni 0
+
+```bash
+arp -s 100.0.201.12 2c:c2:60:63:51:e4
+arp -an
+```
 
 where 100.0.200.12 is the IP address of the BMS and 2c:c2:60:63:51:e4 is the MAC of the respective interface on the BMS.
 
-```
+```bash
 [root@server4 ~]# route -n | grep 169
 169.254.0.0     0.0.0.0         255.255.0.0     U     1002   0        0 ens3
 169.254.0.3     0.0.0.0         255.255.255.255 UH    0      0        0 vhost0
@@ -260,7 +263,6 @@ where 100.0.200.12 is the IP address of the BMS and 2c:c2:60:63:51:e4 is the MAC
 cirros@169.254.0.3's password: 
 $ 
 $ 
-
 ```
  
  *Expected result:* 
