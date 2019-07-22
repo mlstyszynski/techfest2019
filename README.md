@@ -103,6 +103,7 @@ You can check the type of containers running on server1 vs server6 and the conta
 
 > **Task 1.1 Deploy the overlay iBGP EVPN network using the BGP ASN 64512**
 
++ Go to Fabric / Action / Brownfield wizard
 + Discover the devices as based on the given range of subnet 10.0.0.0/24 
 + Associate the devices with the roles 
 + Deploy the overlay
@@ -164,7 +165,7 @@ BMS3 cannot ping the BMS1 and BMS2
 ---
 
 > **Task 1.8 Create a VPG-4 which will be ready to connect in the future the BMS-4 connected to leaf1 xe-0/0/7 and leaf2 xe-0/0/7**
-+ Go to the Overlay -> Virtual-Port-Group option of the EM dashboard and create two VPG ports associated with the same virtual-network as used by BMS-1 and BMS-2
++ Go to the Overlay -> Virtual-Port-Group option of the EM dashboard and create VPG-4 associated with the same virtual-network as used by BMS-1 and BMS-2 (in Task 1.4, Virtual-Network1-2)
 
 *Expected result:* interfae xe-0/0/7 on leaf1 and leaf2 should be part of a new ESI-LAG, ESI and LACP system-id values of the new ESI-LAG should be allocated automatically by the Fabric Manager
 
@@ -207,14 +208,14 @@ You can add the routes by going to the BMS-1/2 and BMS-3 console and adding it:
 
 ---
 
-> **Task 1.12 Using a Cirros linux image enable two VMs in the same virtual-network as BMS-1 and BM-2**
+> **Task 1.12 Using a Cirros linux image enable two VMs in the same virtual-network as BMS-1 and BMS-2**
 
 Note: before enabing the VMs ensure the local compute-node /etc/hosts file is updated with the IP in-band and hostname
 Here's the example of adding the in-band IP@ at the server3 shell `100.0.3.2 server3 server3` is added manually 
 You'll have to make the same changes for server4 and CSN server5 
 Here's the example of the change to be done at the server3 - first check the local IP@ of the in-band fabric interface and add it to /etc/hosts file 
  
-```
+```bash
 [root@server3 ~]# vi /etc/hosts
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 10.0.1.101 server1.local server1
@@ -229,6 +230,8 @@ Here's the example of the change to be done at the server3 - first check the loc
 [root@server3 ~]# docker-compose down
 [root@server3 ~]# docker-compose up -d
 ```
+TODO: check why `docker-compose down` / `docker compose up -d` doesn't always work
+
 Repeat the same for the server4 by adding on server4 the local IP@ and server4 name 
 
  + VM-1 and VM-2 should be enabled in the already existing virtual-network dedicated to BMS-1 and BMS-2 
@@ -237,14 +240,20 @@ Repeat the same for the server4 by adding on server4 the local IP@ and server4 n
  https://docs.openstack.org/image-guide/obtain-images.html
  
  Note: In a CirrOS based VM default login is `cirros` and the password is `gocubsgo`
- 
- Note: 
- + the VM created may need a static arp entry for the BMS due to the vqfx limitation where tunneled arp messages sometimes use vni 0
- + make sure the BMSes from the lab are not using as the last octet the IP@ `.1` or `.2` as these are reserved IP@ - change it to an unused IP@ from the given subnet at the BMS when needed
+  + create a Flavor for your VM
   
- `arp -s 100.0.201.12 2c:c2:60:63:51:e4`
- `arp -an`
+ Note: 
+ + make sure the BMSes from the lab are not using as the last octet the IP@ `.1` or `.2` as these are reserved IP@ - change it to an unused IP@ from the given subnet at the BMS when needed
+ + the VM created may need a static arp entry for the BMS due to the vqfx limitation where tunneled arp messages sometimes use vni 0
+
+```bash
+arp -s 100.0.201.12 2c:c2:60:63:51:e4
+arp -an
 ```
+
+where 100.0.200.12 is the IP address of the BMS and 2c:c2:60:63:51:e4 is the MAC of the respective interface on the BMS.
+
+```bash
 [root@server4 ~]# route -n | grep 169
 169.254.0.0     0.0.0.0         255.255.0.0     U     1002   0        0 ens3
 169.254.0.3     0.0.0.0         255.255.255.255 UH    0      0        0 vhost0
@@ -254,11 +263,10 @@ Repeat the same for the server4 by adding on server4 the local IP@ and server4 n
 cirros@169.254.0.3's password: 
 $ 
 $ 
-
 ```
  
  *Expected result:* 
- + BMS1 can ping the VM-2
+ + BMS-1 can ping the VM-2
  + BMS-2 can ping VM-1 
 
 
