@@ -225,7 +225,7 @@ Here's the example of the change to be done at the server3 - first check the loc
 10.0.1.102 server2.local server2
 10.0.1.103 server3.local server3
 100.0.3.2 server3 server3
-
+[root@server3 ~]# cd /etc/contrail/vrouter
 [root@server3 ~]# docker-compose down
 [root@server3 ~]# docker-compose up -d
 ```
