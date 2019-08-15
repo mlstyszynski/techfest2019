@@ -119,14 +119,8 @@ You can check the type of containers running on server1 vs server6 and the conta
 *Expected results:*
 + four BGP peerings are in the Established state - two for the underlay and two for the overlay 
 ---
-> **Task 1.3 Enable the new network policy called my_allow_all_policy which will allow for the communication within the BMS1 and BMS2 virtual-network**
 
-+ Go to the Overlay-> Network Policy EM 5.1 dashboard and enable the new network policy that allows the communication from/to network 100.0.201/24 
-
-*Expected result:* The new Network policy is enabled 
-
----
-> **Task 1.4 Enable the Virtual-Network1-2 used for BMS-1 and BMS-2 communication**
+> **Task 1.3 Enable the Virtual-Network1-2 used for BMS-1 and BMS-2 communication**
 + Go to the Overlay EM 5.1 dashboard and enable new Virtual-Network used for BMS1 and BMS2 in the subnet range 100.0.201.0/24
 
 *Expected result:* The new Virtual-Network is created but not yet pushed to the leaf devices
@@ -135,7 +129,7 @@ You can check the type of containers running on server1 vs server6 and the conta
 
 ---
 
-> **Task 1.5 Create two VPG-1 and VPG-2 ports: one for BMS1 at leaf1 and one for BMS2 at leaf2 - use the interfaces from the topology diagram**
+> **Task 1.4 Create two VPG-1 and VPG-2 ports: one for BMS1 at leaf1 and one for BMS2 at leaf2 - use the interfaces from the topology diagram**
 + Go to the Overlay -> Virtual-Port-Group option of the EM dashboard and create two VPG ports associated with the virtual-network created in the previous task 
 
 *Expected result:* The virtual-network VLAN and IRB configuration is pushed to the leaf1 and leaf2. 
@@ -148,14 +142,14 @@ BMS1 can ping BMS2 and EVPN based MAC@ learning is taking place
 
 ---
  
-> **Task 1.6 Create a new Virtual-network for BMS3**
+> **Task 1.5 Create a new Virtual-network for BMS3**
 + Go to the Overlay EM 5.1 dashboard and enable new Virtual-Network used for BMS3 in the range 100.0.203.0/24
 
 *Expected result:* The new Virtual-Network is not yet pushed to the leaf devices but is successfuly created in the contrail config API
 
 ---
 
-> **Task 1.7 Create third VPG-3 ports for BMS3 at leaf3**
+> **Task 1.6 Create third VPG-3 ports for BMS3 at leaf3**
 + Go to the Overlay -> Virtual-Port-Group option of the EM dashboard and create two VPG ports associated with the virtual-network created for BMS3 in the previous task
 
 *Expected result:* The virtual-network VLAN and IRB configuration is pushed to the leaf3 only
@@ -163,14 +157,14 @@ BMS3 cannot ping the BMS1 and BMS2
 
 ---
 
-> **Task 1.8 Create a VPG-4 which will be ready to connect in the future the BMS-4 connected to leaf1 xe-0/0/7 and leaf2 xe-0/0/7**
+> **Task 1.7 Create a VPG-4 which will be ready to connect in the future the BMS-4 connected to leaf1 xe-0/0/7 and leaf2 xe-0/0/7**
 + Go to the Overlay -> Virtual-Port-Group option of the EM dashboard and create two VPG ports associated with the same virtual-network as used by BMS-1 and BMS-2
 
 *Expected result:* interfae xe-0/0/7 on leaf1 and leaf2 should be part of a new ESI-LAG, ESI and LACP system-id values of the new ESI-LAG should be allocated automatically by the Fabric Manager
 
 ---
 
-> **Task 1.9  Create a new Logical-Router in order to communicate between the BMS1/2 and BMS3 - integrate the BMS1 and BMS3 virtual-networks under the same logical-router**
+> **Task 1.8  Create a new Logical-Router in order to communicate between the BMS1/2 and BMS3 - integrate the BMS1 and BMS3 virtual-networks under the same logical-router**
 + Go to the Overlay -> Logical Router dashboard option and create a new Logical Router name that associates the two Virtual-Networks enabled in previous tasks 
 + Specify at which leaf devices the logical router (T5 instance) should be enabled 
 Note: before enabling the logical-routers make sure in the EM 5.1 the vxlan-routing capability is explicitly enabled in the given fabric project 
@@ -188,7 +182,7 @@ You can add the routes by going to the BMS-1/2 and BMS-3 console and adding it:
 
 ---
 
-> **Task 1.10 Ensure the CSN is onboarded using server5 and services it offers are fully functional**
+> **Task 1.9 Ensure the CSN is onboarded using server5 and services it offers are fully functional**
 + ensure the DHCP daemon is running at the CSN server
 + check what other service are running on that server
 *Ask yourself:* 
@@ -197,7 +191,7 @@ You can add the routes by going to the BMS-1/2 and BMS-3 console and adding it:
 
 ---
 
-> **Task 1.11 Check the servers server3 and server4 from the topology are onboarded as compute-nodes (aka vrouters)**
+> **Task 1.10 Check the servers server3 and server4 from the topology are onboarded as compute-nodes (aka vrouters)**
 + server4 attached to leaf1 and server3 attached to leaf2 are successfully onboarded already so in this task we have to verify the IP full reachability from hypervisor point of view via the fabric underlay is delivered
 
 *Expected result:*
@@ -207,7 +201,7 @@ You can add the routes by going to the BMS-1/2 and BMS-3 console and adding it:
 
 ---
 
-> **Task 1.12 Using a Cirros linux image enable two VMs in the same virtual-network as BMS-1 and BM-2**
+> **Task 1.11 Using a Cirros linux image enable two VMs in the same virtual-network as BMS-1 and BM-2**
 
 Note: before enabing the VMs ensure the local compute-node /etc/hosts file is updated with the IP in-band and hostname
 Here's the example of adding the in-band IP@ at the server3 shell `100.0.3.2 server3 server3` is added manually 
@@ -264,7 +258,7 @@ $
 
 ---
  
- > **Task 1.13 Create a VM-3 an associate it with the existing virtual-network, created already for the BMS-3**
+ > **Task 1.12 Create a VM-3 an associate it with the existing virtual-network, created already for the BMS-3**
  
  *Expected result:* 
  + VM-3 can ping the BMS-3
@@ -282,6 +276,8 @@ $
 + The fabric discovery network: `10.0.0.0/24` 
 
 + Overlay iBGP ASN number: `64512`
+
++ Loopbacks: `1.1.1.0/24`
 
 + BMS1 and BMS2 virtual network IP@ range: `100.0.201.30-100.0.201.45` subnet mask `/24`
 
