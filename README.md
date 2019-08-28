@@ -110,7 +110,7 @@ You can check the type of containers running on server1 vs server6 and the conta
 In order to deploy the browfield evpn-vxlan fabric (where the IP reachability between the lo0.0 IP@ was already done) go to `Infrastructure > Fabrics` and the `Create > Existing Fabric` and click on `Provision`. 
 - Give a name of you fabric - for example `myfabric101` and keep the default ASN `64512` 
 - Use the management subnet CIDR `10.0.0.0/24`
-- scroll down and click on `Additional configurations` and set the `Loopback subnets > CIDR`  to `1.1.1.0/24` , then just click `Next` in the UI 
+- scroll down, click on `Additional configurations` and set the `Loopback subnets > CIDR`  to `1.1.1.0/24` , then just click `Next` in the UI 
 
 
 *Expected result:*
