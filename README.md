@@ -107,6 +107,12 @@ You can check the type of containers running on server1 vs server6 and the conta
 + Associate the devices with the roles 
 + Deploy the overlay
 
+In order to deploy the browfield evpn-vxlan fabric (where the IP reachability between the lo0.0 IP@ was already done) go to `Infrastructure > Fabrics` and the `Create > Existing Fabric` and click on `Provision`. 
+- Give a name of you fabric - for example `myfabric101` and keep the default ASN `64512` 
+- Use the management subnet CIDR `10.0.0.0/24`
+- Click on `Additional configurations` and set the `Loopback subnets > CIDR`  to `1.1.1.0/24` and click `Next` in the UI 
+
+
 *Expected result:*
 + The leaf and spine devices are discovered and each device is associated with the Edge-Routed architecture roles 
 + Spines1/2 should have role: null (aka Lean Spine) and Route-Reflector 
